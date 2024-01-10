@@ -7,6 +7,8 @@ import (
 
 func TestGCD(t *testing.T) {
 
+	functionName := "GCD"
+
 	tests := []struct {
 		input    []int
 		expected int
@@ -18,10 +20,34 @@ func TestGCD(t *testing.T) {
 	}
 
 	for index, test := range tests {
-		t.Run(fmt.Sprintf("GCD test %d", index), func(t *testing.T) {
+		t.Run(fmt.Sprintf("%s test %d", functionName, index), func(t *testing.T) {
 			result := GCD(test.input[0], test.input[1], test.input[2:]...)
 			if result != test.expected {
-				t.Fatalf("GDC fail - expected: %d | result: %d", test.expected, result)
+				t.Fatalf("%s fail - expected: %d | result: %d", functionName, test.expected, result)
+			}
+		})
+	}
+}
+
+func TestLCM(t *testing.T) {
+
+	functionName := "LCM"
+
+	tests := []struct {
+		input    []int
+		expected int
+	}{
+		{[]int{1, 2, 3}, 6},
+		{[]int{12, 15, 75}, 300},
+		{[]int{14, 19, 122}, 16226},
+		{[]int{7, 5}, 35},
+	}
+
+	for index, test := range tests {
+		t.Run(fmt.Sprintf("%s test %d", functionName, index), func(t *testing.T) {
+			result := LCM(test.input[0], test.input[1], test.input[2:]...)
+			if result != test.expected {
+				t.Fatalf("%s fail - expected: %d | result: %d", functionName, test.expected, result)
 			}
 		})
 	}
