@@ -1,4 +1,4 @@
-package main
+package simplemath
 
 // Euclidian algorithm for finding greatest common divisor for a set of integers
 // https://en.wikipedia.org/wiki/Euclidean_algorithm
