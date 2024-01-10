@@ -1,7 +1,7 @@
 package main
 
-// Euclidian algorithm for finding greatest common divisor
-// https://en.wikipedia.org/wiki/Greatest_common_divisor
+// Euclidian algorithm for finding greatest common divisor for a set of integers
+// https://en.wikipedia.org/wiki/Euclidean_algorithm
 func GCD(x, y int, numbers ...int) int {
 	for {
 		if y == 0 {
@@ -21,7 +21,7 @@ func GCD(x, y int, numbers ...int) int {
 }
 
 // Implementation of least common multiple for a set of integers
-// https://en.wikipedia.org/wiki/Greatest_common_divisor
+// https://en.wikipedia.org/wiki/Least_common_multiple
 func LCM(x, y int, numbers ...int) int {
 	result := x * y / GCD(x, y)
 
