@@ -1,5 +1,7 @@
 package simplemath
 
+import "math"
+
 // Euclidian algorithm for finding greatest common divisor for a set of integers
 // https://en.wikipedia.org/wiki/Euclidean_algorithm
 func GCD(x, y int, numbers ...int) int {
@@ -30,4 +32,13 @@ func LCM(x, y int, numbers ...int) int {
 	}
 
 	return result
+}
+
+// Return distance in 1D space
+func Distance(x, y float64) float64 {
+	if (x < 0 && y < 0) || (x > 0 && y > 0) {
+		return math.Max(math.Abs(x), math.Abs(y)) - math.Min(math.Abs(x), math.Abs(y))
+	} else {
+		return math.Abs(x) + math.Abs(y)
+	}
 }
