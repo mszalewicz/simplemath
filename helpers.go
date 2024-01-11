@@ -26,7 +26,7 @@ func LCM(x, y int, numbers ...int) int {
 	result := x * y / GCD(x, y)
 
 	for i := 0; i < len(numbers); i++ {
-		result = LCM(result, numbers[0])
+		result = LCM(result, numbers[i])
 	}
 
 	return result
