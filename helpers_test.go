@@ -2,6 +2,7 @@ package simplemath
 
 import (
 	"fmt"
+	"slices"
 	"testing"
 )
 
@@ -75,6 +76,36 @@ func TestDistance(t *testing.T) {
 			result := Distance(test.input[0], test.input[1])
 			if result != test.expected {
 				t.Fatalf("%s fail - expected: %f | result: %f", functionName, test.expected, result)
+			}
+		})
+	}
+}
+
+func TestProperDivisors(t *testing.T) {
+	functionName := "ProperDivisors"
+
+	tests := []struct {
+		input    int
+		expected []int
+	}{
+		{24, []int{1, 2, 3, 4, 6, 8, 12}},
+		{1, nil},
+		{364, []int{1, 2, 4, 7, 13, 14, 26, 28, 52, 91, 182}},
+		{-20, nil},
+		{990, []int{1, 2, 3, 5, 6, 9, 10, 11, 15, 18, 22, 30, 33, 45, 55, 66, 90, 99, 110, 165, 198, 330, 495}},
+	}
+
+	for index, test := range tests {
+		t.Run(fmt.Sprintf("%s test %d", functionName, index), func(t *testing.T) {
+			result := ProperDivisors(test.input)
+			slices.Sort(test.expected)
+
+			if result == nil && test.expected == nil {
+				return
+			}
+
+			if (result == nil && test.expected != nil) || !slices.Equal(result, test.expected) {
+				t.Fatalf("%s fail - expected: %v | result: %v", functionName, test.expected, result)
 			}
 		})
 	}

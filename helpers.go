@@ -1,6 +1,9 @@
 package simplemath
 
-import "math"
+import (
+	"math"
+	"slices"
+)
 
 // Euclidian algorithm for finding greatest common divisor for a set of integers
 // https://en.wikipedia.org/wiki/Euclidean_algorithm
@@ -41,4 +44,25 @@ func Distance(x, y float64) float64 {
 	} else {
 		return math.Abs(x) + math.Abs(y)
 	}
+}
+
+func ProperDivisors(number int) []int {
+	if number <= 1 {
+		return nil
+	}
+
+	properDivisors := []int{}
+
+	for i := 1; i <= int(math.Sqrt(float64(number))); i++ {
+		if number%i == 0 {
+			properDivisors = append(properDivisors, i)
+			if number != i*i && number/i != number {
+				properDivisors = append(properDivisors, number/i)
+			}
+		}
+	}
+
+	slices.Sort(properDivisors)
+
+	return properDivisors
 }
